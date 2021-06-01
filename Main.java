@@ -1,52 +1,71 @@
-import java.lang.reflect.Array;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
+/*
+1. -Реализовать рассмотренные структуры данных в консольных программах.
+2. -Создать программу, которая переворачивает вводимые строки (читает справа налево).
+3. -Создать класс для реализации дека.
+ */
 
-//1. Создать массив большого размера (миллион элементов).
-//2. Написать методы удаления, добавления, поиска элемента массива.
-//3. Заполнить массив случайными числами.
-//4. Написать методы, реализующие рассмотренные виды сортировок, и проверить скорость выполнения каждой.
 public class Main {
     public static void main(String[] args) {
-        ArrUtilits <Integer> test1 = new ArrUtilits(5);
-        ArrUtilits <Integer> test2 = new ArrUtilits(5);
-        ArrUtilits <Integer> test3 = new ArrUtilits(5);
-
-//        test.addSortedEl(1);
-//        test.addSortedEl(200);
-//        test.addSortedEl(10);
-//        test.addSortedEl(443);
-//        test.addSortedEl(6);
 //
+        System.out.println("____________________Stack implementation_____________________");
+        StackImpl<Integer> stack1 = new StackImpl<>(10);
+        System.out.println(stack1.isEmpty());
+        System.out.println(stack1.isFull());
+        stack1.push(1);
+        stack1.push(2);
+        stack1.push(3);
+        stack1.push(4);
+
+
+        System.out.println(stack1.peek());
+        System.out.println(stack1.pop());
+        System.out.println(stack1.peek());
 //
-//        test.displayArr();
-//
-//        test.sortSelect();
+        System.out.println("__________________Queue implementation____________________");
+        QueueImpl<Integer> queue = new QueueImpl<>(10);
+        queue.insert(1);
+        queue.insert(3);
+        queue.insert(4);
+        queue.insert(6);
 
-        test1.fillingArrWithRandNumbers(10000);
-        long start = System.nanoTime();
-        test1.sortBubble();
-        long finish = System.nanoTime();
-        long result = finish - start;
-        System.out.println("bubble: " + result);
+        System.out.println(queue.isEmpty());
+        System.out.println(queue.isFull());
+        System.out.println(queue.peek());
+        System.out.println(queue.remove());
+        System.out.println(queue.remove());
+        System.out.println(queue.remove());
 
-        test2.fillingArrWithRandNumbers(10000);
-        long start2 = System.nanoTime();
-        test2.sortSelect();
-        long finish2 = System.nanoTime();
-        long result2 = finish2 - start2;
-        System.out.println("select: " + result2);
+       //
+        System.out.println("_____________Text reverse________________");
 
-        test3.fillingArrWithRandNumbers(10000);
-        long start3 = System.nanoTime();
-        test3.sortInsert();
-        long finish3 = System.nanoTime();
-        long result3 = finish3 - start3;
-        System.out.println("insert: " + result3);
+        ReadReverse rr = new ReadReverse();
+        rr.reverse(ReadReverse.TEXT_TO_REVERT);
+
+        System.out.println("\n");
+        //
+        System.out.println("_______________Dequeue implementation: _____________________");
+            DequeueImpl <Integer> dequeue = new DequeueImpl<>(10);
+            dequeue.insertRight(10);
+            dequeue.insertRight(11);
+            dequeue.insertRight(12);
+            dequeue.insertRight(13);
+            dequeue.insertRight(14);
+            dequeue.insertRight(10);
+            dequeue.insertRight(20);
+            dequeue.insertLeft(7);
+
+            System.out.println(dequeue.removeLeft());
+            System.out.println(dequeue.removeRight());
+
+            System.out.println(dequeue.peekLeft());
+            System.out.println(dequeue.peekRight());
+
+            System.out.println(dequeue.toString());
+
+
 
 
 
 
     }
-
 }
